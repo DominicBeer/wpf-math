@@ -17,6 +17,17 @@ namespace WpfMath.Controls
         private static TexFormulaParser formulaParser = new TexFormulaParser();
         private TexFormula? texFormula;
 
+        public Box PreRenderBox
+        {
+            get
+            {
+                return texFormula != null
+                    ? texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName, Brushes.Transparent, Foreground).Box
+                    : null;
+                
+            }
+        }
+
         public string Formula
         {
             get { return (string)GetValue(FormulaProperty); }
